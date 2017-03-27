@@ -14,11 +14,48 @@ public class EtudiantDto {
 	private String prenom;
 	private String cv;
 	private int rayon;
-//	private String formation;
-//	private String experience;
-//	private String dispo;
-//	private String photo;
+	private String formation;
+	private String experience;
+	private String dispo;
+	private String photo;
 	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getPrenom() {
+		return prenom;
+	}
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+	public String getFormation() {
+		return formation;
+	}
+	public void setFormation(String formation) {
+		this.formation = formation;
+	}
+	public String getExperience() {
+		return experience;
+	}
+	public void setExperience(String experience) {
+		this.experience = experience;
+	}
+	public String getDispo() {
+		return dispo;
+	}
+	public void setDispo(String dispo) {
+		this.dispo = dispo;
+	}
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
 	public String getMail() {
 		return mail;
 	}

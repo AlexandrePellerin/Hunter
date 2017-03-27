@@ -11,7 +11,7 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapperFactory;
 import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 
 public interface EtudiantDao {
-	@SqlUpdate("create table Etudiant (mail varchar(100) primary key)"/*"create table Etudiant (mail varchar(100) primary key , name varchar(100),prenom varchar(100), password varchar(64), birth date,cv varchar(50), rayon int, formation varchar(200), experience varchar(250), dispo varchar(250), photo varchar(100) )"*/)
+	@SqlUpdate("create table Etudiant (mail varchar(100) primary key, name carchar(50), prenom varchar(50),password varchar(50), birth varchar(10), cv varchar(100), rayon int, formation varchar(200), experience varchar(200), dispo varchar(200), photo varchar(100))"/*"create table Etudiant (mail varchar(100) primary key , name varchar(100),prenom varchar(100), password varchar(64), birth date,cv varchar(50), rayon int, formation varchar(200), experience varchar(250), dispo varchar(250), photo varchar(100) )"*/)
     void createEtuTable();
 
 	@SqlUpdate("insert into Etudiant (mail,name,prenom,password,birth,cv,rayon,formation,experience,dispo,photo) values(:mail,:name,:prenom,:password,:birth,:cv,:rayon,:formation,:experience,:dispo,:photo)")
@@ -20,7 +20,7 @@ public interface EtudiantDao {
 	
 	
 	@SqlUpdate("drop table if exists Etudiant")
-    void dropUserTable();
+    void dropEtuTable();
 	
 
     @SqlQuery("select * from Etudiant where mail = :mail")

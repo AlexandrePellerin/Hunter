@@ -32,7 +32,7 @@ public class RecruteurRessource {
         if (!tableExist("Recruteur")) {
             logger.debug("Create table Recuteur");
             dao.createRecruteurTable();
-            dao.insert(new Recruteur("mail0","defaultname"));
+            dao.insert(new Recruteur("mail0","defaultname","defaultpasswd","defaultprenom", "defaultsociete", "defaultaddress", "defaultsiret"));
         }
     }
     
@@ -42,6 +42,11 @@ public class RecruteurRessource {
         rec.initFromDto(dto);
         dao.insert(rec);
         return dto;
+    }
+    
+    @PUT
+    public void updateRecruteur(RecruteurDto dto) {
+    	dao.updateRec(dto.getMail(), dto.getNom(), dto.getPasswd(), dto.getPrenom(), dto.getSociete(), dto.getAddress(), dto.getSiret());
     }
     
 	@GET
@@ -54,12 +59,6 @@ public class RecruteurRessource {
 		return rec.convertToDto();
 	}
 	
-/*@PUT
-	@Path("/{mail}")
-	public void updateRecruteur(RecruteurDto dto){
-		Recruteur rec = new Recruteur();
-		
-	}*/
     
     @DELETE
     @Path("/{mail}")

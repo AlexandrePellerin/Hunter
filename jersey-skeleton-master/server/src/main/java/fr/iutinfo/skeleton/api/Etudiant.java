@@ -28,12 +28,12 @@ public class Etudiant {
 		this.prenom = prenom;
 		this.cv = cv;
 		this.rayon = rayon;
-//		this.formation = formation;
-//		this.experience = experience;
-//		this.dispo = dispo;
-//		this.photo = photo;
+		this.formation = formation;
+		this.experience = experience;
+		this.dispo = dispo;
+		this.photo = photo;
 	}
-	
+
 
 	public Etudiant() {
 
@@ -130,15 +130,14 @@ public class Etudiant {
 	public void initFromDto(EtudiantDto dto) {
 
 		this.setMail(dto.getMail());
-		
 		this.setPassword(dto.getPassword());
 		this.setBirth(dto.getBirth());
 		this.setCv(dto.getCv());
-//		this.setDispo(dto.getDispo());
-//		this.setExperience(dto.getExperience());
-//		this.setFormation(dto.getFormation());
+		this.setDispo(dto.getDispo());
+		this.setExperience(dto.getExperience());
+		this.setFormation(dto.getFormation());
 		this.setname(dto.getname());
-//		this.setPhoto(dto.getPhoto());
+		this.setPhoto(dto.getPhoto());
 		this.setprenom(dto.getprenom());
 		this.setRayon(dto.getRayon());
 	}
@@ -150,12 +149,11 @@ public class Etudiant {
 		dto.setPassword(this.getPassword());
 		dto.setBirth(this.getBirth());
 		dto.setCv(this.getCv());
-//		dto.setDispo(this.getDispo());
-//		dto.setExperience(this.getExperience());
-//		dto.setFormation(this.getFormation());
-
+		dto.setDispo(this.getDispo());
+		dto.setExperience(this.getExperience());
+		dto.setFormation(this.getFormation());
 		dto.setname(this.getname());
-//		dto.setPhoto(this.getPhoto());
+		dto.setPhoto(this.getPhoto());
 		dto.setprenom(this.getprenom());
 		dto.setRayon(this.getRayon());
 

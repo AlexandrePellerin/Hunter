@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_client__inscription"
     android:layout_width="match_parent"
@@ -165,14 +166,6 @@
             android:layout_alignParentEnd="true"
             android:onClick="do_DateNaiss" />
 
-                <Button
-                    android:layout_marginTop="16dp"
-                    android:text="Photo de profil"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/button4"
-                    android:onClick="doChoosePhoto" />
-
                 <TextView
                     android:layout_marginTop="16dp"
                     android:text="TextView"
@@ -185,9 +178,23 @@
                     android:textColor="@color/cardview_light_background" />
 
 
+                <Button
+                    android:layout_marginTop="16dp"
+                    android:text="Photo de profil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button_Photo"
+                    android:onClick="doChoosePhoto" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@color/cardview_dark_background"
+                    android:id="@+id/photo_Profil" />
+
                 <TextView
             android:layout_marginTop="16dp"
-            android:text="TextView"
+            android:text="Rayon de recherche"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView_Rayon"
@@ -204,6 +211,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/seekBar_Rayon"
                     android:max="10"
+                    android:progress="5"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"

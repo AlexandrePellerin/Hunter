@@ -22,19 +22,28 @@ import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class Map_Client extends FragmentActivity implements OnMapReadyCallback {
+public class Map_Client extends FragmentActivity implements OnMapReadyCallback,GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
 
 
     private GoogleMap mMap;
-    private LocationManager locationManager;
+    private LocationRequest mLocationRequest;
+    private GoogleApiClient mGoogleClient;
+    private Location mLastLocation;
+    private Location currentLocation;
+    private Marker marker;
 
 
     @Override
@@ -46,25 +55,16 @@ public class Map_Client extends FragmentActivity implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
 
-        if (ContextCompat.checkSelfPermission(Map_Client.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(Map_Client.this, Manifest.permission.ACCESS_FINE_LOCATION)) {
-
-                //Fermer l'appli
-
-            } else {
-
-                ActivityCompat.requestPermissions(this,
-                        new String[]{
-                                Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
-                //mMap.setMyLocationEnabled(true);
-
-            }
-
-
+        if (mGoogleClient == null) {
+            mGoogleClient = new GoogleApiClient.Builder(this)
+                    .addConnectionCallbacks(this)
+                    .addOnConnectionFailedListener(Map_Client.this)
+                    .addApi(LocationServices.API)
+                    .build();
         }
+
 
     }
 
@@ -83,64 +83,105 @@ public class Map_Client extends FragmentActivity implements OnMapReadyCallback {
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng loca = new LatLng(50.613505, 3.136766);
-        mMap.addMarker(new MarkerOptions().position(loca).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(loca));
+        //LatLng loca = new LatLng(50.613505, 3.136766);
+       // mMap.addMarker(new MarkerOptions().position(loca).title("Marker in IUT A"));
+
+        if(mLastLocation != null) {
+            LatLng lastLocation = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+            marker = mMap.addMarker(new MarkerOptions().position(lastLocation).title("Marker in last know location"));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(lastLocation));
+        }
+    }
+
+
+
+    protected void createLocationRequest() {
+        mLocationRequest = new LocationRequest();
+        mLocationRequest.setInterval(5000);
+        mLocationRequest.setFastestInterval(2000);
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[],
-                                           int[] grantResults) {
-        Log.d("testresquest", "Je suis pas dans le request");
-        switch (requestCode) {
-            case 1: {
-                Log.d("testresquest2", "Je suis dans le request");
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Log.d("testresquest4", "Je suis avant le try");
-                    try {
-                        Log.d("testresquest3", "Je suis dans le try");
-                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 150, new LocationListener() {
-                            @Override
-                            public void onLocationChanged(Location location) {
-                                LatLng newpos = new LatLng(location.getLatitude(), location.getLongitude());
-                                mMap.addMarker(new MarkerOptions().position(newpos).title("New marker on current pos"));
-                                mMap.moveCamera(CameraUpdateFactory.newLatLng(newpos));
-                                Log.d("success", "normalement moveCamera");
+    public void onConnected(@Nullable Bundle bundle) {
 
-                            }
-
-                            @Override
-                            public void onStatusChanged(String provider, int status, Bundle extras) {
-
-                            }
-
-                            @Override
-                            public void onProviderEnabled(String provider) {
-
-                            }
-
-                            @Override
-                            public void onProviderDisabled(String provider) {
-
-                            }
-                        });
-                    } catch (SecurityException e) {
-                        Log.d("taggeo", e.getMessage());
-
-                    }
-
-                } else {
-                    Log.d("testrequest4", "permission refusée");
-                    // La permission est refusée
-                }
+        try {
+            mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                    mGoogleClient);
+            if (mLastLocation == null) {
+                Log.d("test1","LastLocation null");
             }
+        } catch (SecurityException e) {
+            Log.d("test","SecurityException in onConnected"+e.toString());
         }
+
+        createLocationRequest();
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
+                .addLocationRequest(mLocationRequest);
+
+        PendingResult<LocationSettingsResult> result =
+                LocationServices.SettingsApi.checkLocationSettings(mGoogleClient,
+                        builder.build());
+
+
+
+             startLocationUpdates();
+
+
+
+
 
 
     }
 
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
+    protected void onStart() {
+        mGoogleClient.connect();
+        super.onStart();
+    }
+
+    protected void onStop() {
+        mGoogleClient.disconnect();
+        super.onStop();
+    }
+
+    protected void startLocationUpdates() {
+        try {
+            LocationServices.FusedLocationApi.requestLocationUpdates(
+                    mGoogleClient, mLocationRequest, Map_Client.this);
+        } catch(SecurityException e) {
+            Log.d("test2","SecurityException in startLocationUpdates"+e.getMessage());
+        }
+    }
 
 
+    @Override
+    public void onLocationChanged(Location location) {
+        currentLocation = location;
+
+        LatLng cLocation = new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude());
+        mMap.clear();
+        mMap.addMarker(new MarkerOptions().position(cLocation).title("Marker in last know location"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(cLocation));
+
+    }
+
+    protected void onPause() {
+        super.onPause();
+        stopLocationUpdates();
+    }
+
+    protected void stopLocationUpdates() {
+        LocationServices.FusedLocationApi.removeLocationUpdates(
+                mGoogleClient, this);
+    }
 }

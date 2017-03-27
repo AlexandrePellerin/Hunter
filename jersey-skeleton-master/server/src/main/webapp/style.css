@@ -13,12 +13,11 @@
 	src: url('polices/grenade.ttf');
 }
 
-
 #titre {
 	text-align: center;
 	font-size: 120px;
-    background: #002B3B;
     padding: 50px;
+    background:#393E41; 
     color: white;
     font-family: "police";
 }
@@ -32,6 +31,25 @@
     font-family: "police2";
 }
 
+#offres_candidat {
+	text-align: center;
+	font-size: 30px;
+    background: #C44C51;
+    padding: 20px;
+    color: white;
+    font-family: "police2";
+}
+
+#profil_candidats {
+	text-align: center;
+	font-size: 30px;
+    margin-top: -100px;
+    background: #62537A;
+    padding: 20px;
+    color: white;
+    font-family: monospace;
+}
+
 #inscrire {
     font-family: "police2";
 }
@@ -41,7 +59,7 @@
 }
 
 body {
-	background: white;
+	background: #ECF8F8;
 }
 
 .col-md-6 {
@@ -53,6 +71,10 @@ body {
 .col-md-7 {
     float: left;
     width: 40%;
+}
+
+input {
+    border: 1px solid white;
 }
 
 input::placeholder {
@@ -74,7 +96,7 @@ input::placeholder {
 }
 
 #aliasdb {
-     margin-left: auto;
+    margin-left: auto;
     margin-right: auto;
     width: 50%;
     padding: 10px;
@@ -84,7 +106,7 @@ input::placeholder {
 }
 
 #emaildb {
-     margin-left: auto;
+    margin-left: auto;
     margin-right: auto;
     width: 50%;
     padding: 10px;
@@ -125,23 +147,25 @@ margin-left: auto;
 
 #post-bdd {
     border-radius: 5px;
+    border: 1px solid #FB3640;
     padding: 10px 40px 10px 35px;
-    background: #375D81;
+    background: #FB3640;
     color: white;
     font-family: arial;
 }
 
 #read-forall {
-   border-radius: 5px;
+    border-radius: 5px;
+    border: 1px solid #FB3640;
     padding: 10px 40px 10px 35px; 
-    background: #375D81;
+    background: #FB3640;
     color: white;
     font-family: arial;
 }
 
 #profil_candidat {
     border-radius: 5px;
-    padding: 10px 40px 10px 35px; 
+    padding: 10px 40px 10px 35px;
     color: white;
     font-family: arial;
     margin-left: 70%;
@@ -161,12 +185,45 @@ margin-left: auto;
     border-radius: 5px;
     margin-bottom: 10px;
     margin-top: -25px;
+    background: #3D354A;
+    padding: 50px 40px; 
+    font-family: "police3";
+    font-size: 70px;
+    color:white;
+    
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .16),
+                0 3px 6px rgba(0, 0, 0, .23);
+    -webkit-transition: box-shadow .3s;
+    transition: box-shadow .3s;
+    -webkit-transform: translate(-50%, -50%, 0);
+    transform: translate(-50%, -50%, 0);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+#recruteur:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .19),
+                0 6px 6px rgba(0, 0, 0, .23);
+}
+
+/*#recruteur {
+    margin-left: auto;
+    display: block;
+    margin : auto;
+    width: 40%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-top: -25px;
     background: #FF483D;
     padding: 50px 40px; 
     font-family: "police3";
     font-size: 70px;
     color:white;
-}
+}*/
 
 #etudiant {
     margin-left: auto;
@@ -174,9 +231,57 @@ margin-left: auto;
     margin : auto;
     width: 40%;
     border-radius: 5px;
-    background: #039BE5;
+    background: #62537A;
     padding: 50px 40px; 
     font-family:"police3";
     font-size: 70px;
     color:white;
+    
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .16),
+                0 3px 6px rgba(0, 0, 0, .23);
+    -webkit-transition: box-shadow .3s;
+    transition: box-shadow .3s;
+    -webkit-transform: translate(-50%, -50%, 0);
+    transform: translate(-50%, -50%, 0);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+#etudiant:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .19),
+                0 6px 6px rgba(0, 0, 0, .23);
+}
+
+.ripple {
+    position: absolute;
+    opacity: 0;
+    border-radius: 50%;
+    width: 2px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, .35);
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-name: ripple;
+    animation-name: ripple;
+}
+@-webkit-keyframes ripple {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(165);
+    }
+}
+@keyframes ripple {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        transform: scale(165);
+    }
 }

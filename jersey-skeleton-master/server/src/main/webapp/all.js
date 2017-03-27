@@ -21,6 +21,7 @@ function getProfilCandidat() {
        dataType: 'json',
        success: function (data) {
     	 getCandidats();
+           console.log("ok");
        },
        error : function(jqXHR, textStatus, errorThrown) {
        			alert('error: ' + textStatus);
@@ -44,7 +45,7 @@ function getProfilCandidat() {
        success: function (data) {
            console.log(data);
            if(data.id != -1) {
-               getIdentification();
+               getIdentificationEtudiant();
            
            } else {
                alert('Le login ou le mot de passe a été mal saisi')

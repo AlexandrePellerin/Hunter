@@ -40,6 +40,7 @@ public class EtudiantRessource {
 	}
 
 	@POST
+	@Path("/add")
 	public EtudiantDto createEtu(EtudiantDto dto) {
 		Etudiant etu = new Etudiant();
 		etu.initFromDto(dto);
@@ -78,6 +79,13 @@ public class EtudiantRessource {
     	Etudiant etu = new Etudiant();
 		etu.initFromDto(dto);
 		dao.update(etu.getMail());
+    }
+    
+    @DELETE
+    @Path("/reset")
+    public void resetTable() {
+        dao.dropEtuTable();
+        dao.createEtuTable();
     }
 
 
