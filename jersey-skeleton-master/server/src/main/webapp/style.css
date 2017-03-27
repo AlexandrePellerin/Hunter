@@ -1,0 +1,182 @@
+@font-face {
+	font-family: "police";
+	src: url('polices/American Captain.ttf');
+}
+
+@font-face {
+	font-family: "police2";
+	src: url('polices/Bellerose.ttf');
+}
+
+@font-face {
+	font-family: "police3";
+	src: url('polices/grenade.ttf');
+}
+
+
+#titre {
+	text-align: center;
+	font-size: 120px;
+    background: #002B3B;
+    padding: 50px;
+    color: white;
+    font-family: "police";
+}
+
+#offres {
+	text-align: center;
+	font-size: 30px;
+    background: #C44C51;
+    padding: 20px;
+    color: white;
+    font-family: "police2";
+}
+
+#inscrire {
+    font-family: "police2";
+}
+
+#identifier {
+    font-family: "police2";
+}
+
+body {
+	background: white;
+}
+
+.col-md-6 {
+    float:left;
+    margin-left: 20%;
+    width: 40%;
+}
+
+.col-md-7 {
+    float: left;
+    width: 40%;
+}
+
+input::placeholder {
+  color: grey;
+}
+
+#userdb {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 10px;
+    border-radius: 5px;
+    background: white;
+    margin-bottom: 10px;
+}
+
+.form-control {
+    background: white;
+}
+
+#aliasdb {
+     margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 10px;
+    border-radius: 5px;
+    background: white;
+    margin-bottom: 10px;
+}
+
+#emaildb {
+     margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 10px;
+    border-radius: 5px;
+    background: white;
+    margin-bottom: 10px;
+}
+
+#passwddb {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 10px;
+    border-radius: 5px;
+    background: white;
+    margin-bottom: 10px;
+}
+
+#userlogin {
+margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 10px;
+    border-radius: 5px;
+    background: white;
+    margin-bottom: 10px;
+}
+
+#passwdlogin {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 10px;
+    border-radius: 5px;
+    background: white;
+    margin-bottom: 10px;
+}
+
+#post-bdd {
+    border-radius: 5px;
+    padding: 10px 40px 10px 35px;
+    background: #375D81;
+    color: white;
+    font-family: arial;
+}
+
+#read-forall {
+   border-radius: 5px;
+    padding: 10px 40px 10px 35px; 
+    background: #375D81;
+    color: white;
+    font-family: arial;
+}
+
+#profil_candidat {
+    border-radius: 5px;
+    padding: 10px 40px 10px 35px; 
+    color: white;
+    font-family: arial;
+    margin-left: 70%;
+    background: #FFB6B8;
+}
+
+.fond {
+    height: 500px;
+    background: #C4D7ED;
+}
+
+#recruteur {
+    margin-left: auto;
+    display: block;
+    margin : auto;
+    width: 40%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-top: -25px;
+    background: #FF483D;
+    padding: 50px 40px; 
+    font-family: "police3";
+    font-size: 70px;
+    color:white;
+}
+
+#etudiant {
+    margin-left: auto;
+    display: block;
+    margin : auto;
+    width: 40%;
+    border-radius: 5px;
+    background: #039BE5;
+    padding: 50px 40px; 
+    font-family:"police3";
+    font-size: 70px;
+    color:white;
+}

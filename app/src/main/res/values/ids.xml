@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="chercher" type="id" />
+    <item name="recruter" type="id" />
+    <item name="connect" type="id" />
+    <item name="signup" type="id" />
+    <item name="mail" type="id" />
+    <item name="passwd" type="id" />
+    <item name="nom_societe" type="id" />
+    <item name="nom_poste" type="id" />
+    <item name="description" type="id" />
+    <item name="nb_heure" type="id" />
+</resources>

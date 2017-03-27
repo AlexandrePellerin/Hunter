@@ -1,0 +1,92 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/cardview_dark_background">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/map"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <Button
+            android:text="Mes offres"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_mes_offres"
+            android:layout_weight="1"
+            android:layout_marginLeft="0px"
+            android:layout_marginRight="0px"
+            android:layout_marginTop="0px"
+            android:layout_marginBottom="0px"
+            android:paddingLeft="0px"
+            android:paddingRight="0px"
+            android:paddingTop="0px"
+            android:paddingBottom="0px"
+            android:background="@color/colorAccent"
+            android:textColor="@color/cardview_light_background" />
+
+        <Button
+            android:text="Mon profil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_mon_profil"
+            android:layout_weight="1"
+            android:layout_marginLeft="0px"
+            android:layout_marginRight="0px"
+            android:layout_marginTop="0px"
+            android:layout_marginBottom="0px"
+            android:paddingLeft="0px"
+            android:paddingRight="0px"
+            android:paddingTop="0px"
+            android:paddingBottom="0px"
+            android:background="@color/colorAccent"
+            android:textColor="@color/cardview_light_background" />
+        <Button
+            android:text="Paramètres"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_parametre"
+            android:layout_weight="1"
+            android:layout_marginLeft="0px"
+            android:layout_marginRight="0px"
+            android:layout_marginTop="0px"
+            android:layout_marginBottom="0px"
+            android:paddingLeft="0px"
+            android:paddingRight="0px"
+            android:paddingTop="0px"
+            android:paddingBottom="0px"
+            android:background="@color/colorAccent"
+            android:textColor="@color/cardview_light_background" />
+    </LinearLayout>
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        tools:context="com.example.diazr.hunter.Map_Client"
+        android:layout_below="@+id/button_manuel"
+        android:layout_centerHorizontal="true"
+        android:layout_width="400dp"
+        android:layout_height="500dp" />
+
+    <Button
+        android:text="Passer en mode manuel"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_manuel"
+        android:textColor="@color/cardview_light_background"
+        android:background="@color/colorAccent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+</RelativeLayout>

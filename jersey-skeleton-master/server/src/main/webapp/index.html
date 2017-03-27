@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="style.css" rel="stylesheet">
+<script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="all.js"></script>
+<script src="boutons.js"></script>
+<title>Accueil</title>
+</head>
+<body>	
+    <div>
+    <h1 id="titre">HUNTER</h1>
+    </div>
+    <div>
+        <button id="recruteur" class="btn btn-default">RECRUTEUR</button>
+        <button id="etudiant" class="btn btn-default">ETUDIANT</button>
+        
+    </div>
+    <div id="container">
+        <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <h1 id="inscrire">S'inscrire</h1>
+                <input type="text" name="userdb" id="userdb" placeholder="Nom ?" class="form-control"/>
+                <input type="text" name="user" id="aliasdb" placeholder="Surnom ?" class="form-control"/>
+                <input type="text" name="email" id="emaildb" placeholder="Email ?" class="form-control"/>
+                <input type="password" name="user" id="passwddb" placeholder="Mot de passe ?" class="form-control"/>
+            </div>
+            <div class="btn-group" role="group">
+                <button type="button" id="post-bdd" class="btn btn-primary">Sauver</button>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <h1 id="identifier">S'identifier</h1>
+            <input type="text" name="userlogin" id="userlogin" placeholder="Login" class="form-control"/>
+            <input type="password" name="user" id="passwdlogin" placeholder="Password" class="form-control"/>
+            <br/>
+            <button id="read-forall" class="btn btn-default">S'identifier</button>
+            <br/>
+        </div>
+    </div>
+    </div>
+    <div id="div_offres">
+        <h1 id="offres">Mes offres</h1>
+        <button id="read-forall" class="btn btn-default">Ajouter</button>
+        <button id="read-forall" class="btn btn-default">Supprimer</button>
+        <button id="profil_candidat" class="btn btn-default">Profils candidats</button>
+    </div>
+    
+    <div id="candidats">
+    <div class="row" style="margin-top: 1em;">
+        <div class="panel panel-info">
+            <h1 id="offres">Liste des candidats</h1>
+            <div class="panel-body" id="reponse">
+            </div>
+        </div>
+    </div>
+    </div>
+    <div id="retour"> 
+        <button id="retour" class="btn btn-default">Retour</button>
+    </div>
+    <script>
+        $("#container").hide();
+        $("#etudiant").click(function () {getInscription()});
+        $("#post-bdd").click(function () {postUserBdd(
+				    $('#userdb').val(),
+				    $('#aliasdb').val(),
+				    $('#emaildb').val(),
+				    $('#passwddb').val())});
+        $("#read-forall").click(function () {getForAll()});
+        $("#div_offres").hide();
+        $("#candidats").hide();
+        $("#profil_candidat").click(function() {getProfilCandidat()});
+    </script>
+</body>
+</html>
