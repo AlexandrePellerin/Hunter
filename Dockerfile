@@ -1,5 +1,6 @@
 from debian:sid
 env DEBIAN_FRONTEND noninteractive
+run cd jersey-skeleton-master
 run sed -e 's/deb.debian.org/debian.mirrors.ovh.net/g' -i /etc/apt/sources.list
 run apt-get update \
     && apt-get install -y maven openjdk-8-jdk jetty9 \
