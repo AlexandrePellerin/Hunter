@@ -1,12 +1,12 @@
 ﻿# Rétrospective de sprint
 
-Nom du scrum master du sprint : Rachel Diaz
+Nom du scrum master du sprint : Antoine Hourdeau
 
 ## Ce que nous avons fait durant ce sprint
 Donnez ici la liste des histoires utilisateurs que vous avez livrés durant ce sprint.
 -recherche sur la connexion du serveur via JS et android
--ajout spinner "raypn de demande"
--message erreur connexion si aucun champ remplie
+-verification champ vide ecran de connexion
+-ajout spinner rayon de recherche
 
 
 ## Ce que nous allons faire durant le prochain sprint

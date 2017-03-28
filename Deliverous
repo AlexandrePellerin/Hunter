@@ -1,6 +1,6 @@
 java:
   image: pelleria/hunter
   ports:
-  - ip: 51.255.131.187
+  - ip: 5.135.124.212
     container_port: 8080
     host_port: 80

@@ -31,4 +31,7 @@ public interface RecruteurDao {
     @SqlUpdate("update Recruteur set nom = :nom, passwd = :passwd, prenom = :prenom, societe = :societe, address = :address , siret = :siret where mail = :mail ")
     Recruteur updateRec(@Bind("mail") String mail,@Bind("nom") String nom,@Bind("passwd") String passwd,@Bind("prenom") String prenom,@Bind("societe") String societe,@Bind("address") String address,@Bind("siret") String siret);
 
+    @SqlQuery("select count(*) from Recruteur")
+    int countAll();
+    
 }

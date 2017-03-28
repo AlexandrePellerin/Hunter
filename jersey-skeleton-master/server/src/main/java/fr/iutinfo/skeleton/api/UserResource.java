@@ -37,8 +37,6 @@ public class UserResource {
         dto.setId(id);
         return dto;
     }
-    
- 
 
     @GET
     @Path("/{name}")

@@ -8,7 +8,7 @@ import fr.iutinfo.skeleton.common.dto.OffresDto;
 public class Offres {
 	
 	final static Logger logger = LoggerFactory.getLogger(Recruteur.class);
-	private int num;
+	private int numero;
 	private String mailRecru;
 	private String poste;
 	private String description;
@@ -16,20 +16,20 @@ public class Offres {
 	
 	public Offres(){}
 	
-	public Offres(int num, String mailRecru,String poste,String description,int nbHeure){
-		this.num=num;
+	public Offres(int numero, String mailRecru,String poste,String description,int nbHeure){
+		this.numero=numero;
 		this.mailRecru=mailRecru;
 		this.poste=poste;
 		this.description=description;
 		this.nbHeure=nbHeure;
 	}
 
-	public int getNum() {
-		return num;
+	public int getNumero() {
+		return numero;
 	}
 
-	public void setNum(int num) {
-		this.num = num;
+	public void setNumero(int numero) {
+		this.numero = numero;
 	}
 
 	public String getMailRecru() {
@@ -68,8 +68,20 @@ public class Offres {
 		this.setDescription(dto.getDescription());
 		this.setMailRecru(dto.getMailRecru());
 		this.setNbHeure(dto.getNbHeure());
-		this.setNum(dto.getNum());
+		this.setNumero(dto.getNumero());
 		this.setPoste(dto.getPoste());
+	}
+	
+	public OffresDto convertToDto(){
+		OffresDto dto = new OffresDto();
+	
+		dto.setDescription(this.getDescription());
+		dto.setMailRecru(this.getMailRecru());
+		dto.setNbHeure(this.getNbHeure());
+		dto.setNumero(this.getNumero());
+		dto.setPoste(this.getPoste());
+		
+		return dto;
 	}
 	
 }

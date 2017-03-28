@@ -32,8 +32,8 @@ function getProfilCandidat() {
 //Vérifie si les champs login et mot de passe ne sont pas vides
  function getSecure(url) {
  if(($("#userlogin").val() != "") && ($("#passwdlogin").val() != "")) {
-     console.log($("#passwdlogin").val());
-     console.log($("#userlogin").val());
+     //console.log($("#passwdlogin").val());
+     //console.log($("#userlogin").val());
      $.ajax
      ({
        type: "GET",
@@ -46,22 +46,24 @@ function getProfilCandidat() {
            console.log(data);
            if(data.id != -1) {
                getIdentificationEtudiant();
-           
            } else {
-               alert('Le login ou le mot de passe a été mal saisi')
+               $("#erreurConnexion").show();
+               $("#passwdlogin").val("");
            }
-           
+        document.cookie = "login="+$("#userlogin").val();
+           $("#profil_candidats").html("Bienvenue " + getCookie('login'));
        },
        error : function(jqXHR, textStatus, errorThrown) {
        			alert('error: ' + textStatus);
        		}
      });
      } else {
-         alert('Le login ou le mot de passe a été mal saisi');
+         $("#erreurConnexion").show();
+         $("#passwdlogin").val("");
      $.getJSON(url, function(data) {
      	    afficheUser(data);
         });
- }
+    }
  }
 
 function postUserBdd(name, alias, email, pwd) {
@@ -69,13 +71,14 @@ function postUserBdd(name, alias, email, pwd) {
 }
 
 function postUserGeneric(name, alias, email, pwd, url) {
-	console.log("postUserGeneric " + url)
-	$.ajax({
-		type : 'POST',
-		contentType : 'application/json',
-		url : url,
-		dataType : "json",
-		data : JSON.stringify({
+    if($("#passwddb").val() != "") {
+	   console.log("postUserGeneric " + url);
+	   $.ajax({
+		  type : 'POST',
+		  contentType : 'application/json',
+		  url : url,
+		  dataType : "json",
+		  data : JSON.stringify({
 			"name" : name,
 			"alias" : alias,
 			"email" : email,
@@ -84,11 +87,48 @@ function postUserGeneric(name, alias, email, pwd, url) {
 		}),
 		success : function(data, textStatus, jqXHR) {
 			afficheUser(data);
+            $("#userdb").val("");
+            $("#aliasdb").val("");
+            $("#emaildb").val("");
+            $("#passwddb").val("");
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			console.log('postUser error: ' + textStatus);
 		}
 	});
+    } else {
+        $("#passwddb").val("");
+        $("#erreur").show();
+    }
+}
+
+function postRecruteurBdd(nom, prenom, mail, adresse, societe, siret, passwd) {
+    postRecruteurGeneric(nom, prenom, mail, adresse, societe, siret, passwd, "v1/Rec/");
+}
+
+function postRecruteurGeneric(nom, prenom, mail, adresse, societe, siret, passwd, url) {
+    console.log("postRecruteurGeneric" + url);
+    $.ajax({
+        type : 'POST',
+        contentType : 'application/json',
+        url : url,
+        dataType : "json",
+        date : JSON.stringify({
+            "nom" : nom,
+            "prenom" : prenom,
+            "mail" : mail,
+            "address" : adresse,
+            "societe" : societe,
+            "siret" : siret,
+            "passwd" :passwd
+        }),
+        success : function(data, textStatus, jqXHR) {
+            afficheUser(data);
+        },
+        error : function(jqXHR, textStatus, errorThrown) {
+            console.log('postRecruteur error: ' + textStatus);
+        }
+    });
 }
 
 function listUsersBdd() {
@@ -152,4 +192,20 @@ function getAuthRecruteur() {
        			alert('error: ' + textStatus);
        		}
      }); 
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
 }

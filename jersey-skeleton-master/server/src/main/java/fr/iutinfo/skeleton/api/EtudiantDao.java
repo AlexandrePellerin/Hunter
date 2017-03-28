@@ -38,8 +38,8 @@ public interface EtudiantDao {
     @RegisterMapperFactory(BeanMapperFactory.class)
     List<User> listall();
 
-    @SqlUpdate("update Etudiant set prenom = :prenom where mail = :mail")
-    void update(@Bind("mail") String mail);
+    @SqlUpdate("update Etudiant set prenom = :prenom , name = :name , prenom = :prenom , birth = :birth , cv = :cv , rayon = :rayon , formation = :formation , experience = :experience , dispo = :dispo , photo = :photo where mail = :mail")
+    void update(@Bind("mail") String mail,@Bind("prenom") String prenom, @Bind("name") String name,@Bind("birth") String birth,@Bind("cv") String cv, @Bind("rayon") int rayon,@Bind("formation") String formation, @Bind("experience") String experience,@Bind("dispo") String dispo, @Bind("photo") String photo);
     
     void close();
 }

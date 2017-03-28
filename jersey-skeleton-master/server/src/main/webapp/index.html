@@ -21,7 +21,8 @@
         <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <h1 id="inscrire">S'inscrire</h1>
+                <h1 id="inscrire">S'inscrire en tant qu'étudiant</h1>
+                <div id="erreur"> <p>Il vous manque un mot de passe</p> </div>
                 <input type="text" name="userdb" id="userdb" placeholder="Login ?" class="form-control"/>
                 <input type="text" name="user" id="aliasdb" placeholder="Nom ?" class="form-control"/>
                 <input type="text" name="email" id="emaildb" placeholder="Email ?" class="form-control"/>
@@ -33,6 +34,7 @@
         </div>
         <div class="col-md-7">
             <h1 id="identifier">S'identifier</h1>
+            <div id="erreurConnexion"> <p>Le login ou le mot de passe a été mal saisi</p> </div>
             <input type="text" name="userlogin" id="userlogin" placeholder="Login" class="form-control"/>
             <input type="password" name="user" id="passwdlogin" placeholder="Password" class="form-control"/>
             <br/>
@@ -46,14 +48,16 @@
         <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <h1 id="inscrire">S'inscrire</h1>
-                <input type="text" name="userdb" id="userdb" placeholder="Login ?" class="form-control"/>
-                <input type="text" name="user" id="aliasdb" placeholder="Nom ?" class="form-control"/>
-                <input type="text" name="email" id="emaildb" placeholder="Email ?" class="form-control"/>
-                <input type="password" name="user" id="passwddb" placeholder="Mot de passe ?" class="form-control"/>
+                <h1 id="inscrire">S'inscrire en tant que recruteur</h1>
+                <input type="text" name="userdb" id="userdb2" placeholder="Nom" class="form-control"/>
+                <input type="text" name="user" id="aliasdb2" placeholder="Prenom" class="form-control"/>
+                <input type="text" name="email" id="emaildb2" placeholder="Email" class="form-control"/>
+                <input type="text" name="user" id="adresse" placeholder="Adresse" class="form-control"/>
+                <input type="text" name="user" id="siret" placeholder="Siret" class="form-control"/>
+                <input type="password" name="user" id="passwddb2" placeholder="Mot de passe" class="form-control"/>
             </div>
             <div class="btn-group" role="group">
-                <button type="button" id="post-bdd" class="btn btn-primary">Sauver</button>
+                <button type="button" id="post-bdd2" class="btn btn-primary">Sauver</button>
             </div>
         </div>
         <div class="col-md-7">
@@ -68,7 +72,11 @@
     </div>
     
     <div id="profil">
-        <h1 id="profil_candidats">Profil candidat</h1>
+        <h1 id="profil_candidats">Bienvenue</h1>
+        <script>
+            
+        </script>
+        
     </div>
     
     <div id="div_offres_candidat">
@@ -97,6 +105,8 @@
     <script>
         $("#container").hide();
         $("#container_recruteur").hide();
+        $("#erreurConnexion").hide();
+        $("#erreur").hide();
         $("#etudiant").click(function () {getInscription()});
         $("#recruteur").click(function () {getInscriptionRecruteur()});
         $("#post-bdd").click(function () {postUserBdd(
@@ -110,6 +120,14 @@
         $("#candidats").hide();
         $("#profil").hide();
         //$("#retour").click(function() {getRetour()});
+        $("#post-bdd2").click(function() {postRecruteurBdd(
+                    $('#userdb2').val(),
+                    $('#aliasdb2').val(),
+                    $('#emaildb2').val(),
+                    $('#adresse').val(),
+                    $('#siret').val(),
+                    $('#passwddb2').val()
+        )});
     </script>
      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
         <script type="text/javascript">

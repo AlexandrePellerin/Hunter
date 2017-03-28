@@ -5,18 +5,18 @@ import org.slf4j.LoggerFactory;
 
 public class OffresDto {
 	final static Logger logger = LoggerFactory.getLogger(OffresDto.class);
-	private int num;
+	private int numero;
 	private String mailRecru;
 	private String poste;
 	private String description;
 	private int nbHeure;
 	
-	public int getNum() {
-		return num;
+	public int getNumero() {
+		return numero;
 	}
 
-	public void setNum(int num) {
-		this.num = num;
+	public void setNumero(int numero) {
+		this.numero = numero;
 	}
 
 	public String getMailRecru() {

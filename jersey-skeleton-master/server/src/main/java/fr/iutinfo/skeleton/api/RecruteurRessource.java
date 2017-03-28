@@ -72,4 +72,13 @@ public class RecruteurRessource {
         dao.dropRecruteurTable();
         dao.createRecruteurTable();
     }
+    
+    @GET
+    @Path("/c")
+    public String count(){
+    	int a =dao.countAll();
+    	System.out.println(a);
+    	String b = ""+a;
+    	return b;
+    }
 }

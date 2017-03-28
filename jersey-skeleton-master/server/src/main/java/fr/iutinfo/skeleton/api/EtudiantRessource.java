@@ -34,13 +34,12 @@ public class EtudiantRessource {
 		if (!tableExist("Etudiant")) {
 			logger.debug("Create table Etudiant");
 			dao.createEtuTable();
-			dao.insert(new Etudiant("mail", "123", "testnom", "prenom", "1995-04-06", "url cv", 5, "urlformation",
+			dao.insert(new Etudiant("mail", "123", "testnom", "prenom", "1995-04-06", "urlcv", 5, "urlformation",
 					"urlexperience", "urldispo", "urlphoto"));
 		}
 	}
 
 	@POST
-	@Path("/add")
 	public EtudiantDto createEtu(EtudiantDto dto) {
 		Etudiant etu = new Etudiant();
 		etu.initFromDto(dto);
@@ -78,7 +77,8 @@ public class EtudiantRessource {
     public void updateEtu(EtudiantDto dto){
     	Etudiant etu = new Etudiant();
 		etu.initFromDto(dto);
-		dao.update(etu.getMail());
+		dao.update(etu.getMail(), etu.getprenom(), etu.getname(), etu.getBirth(), etu.getCv(), etu.getRayon(), etu.getFormation(), etu.getExperience(), etu.getDispo(), etu.getDispo());
+				
     }
     
     @DELETE
@@ -88,5 +88,6 @@ public class EtudiantRessource {
         dao.createEtuTable();
     }
 
-
+    
+    
 }

@@ -27,8 +27,6 @@ public class Recruteur {
 		this.address=address;
 		this.siret=siret;
 	}
-	
-	
 
 	public String getPrenom() {
 		return prenom;
